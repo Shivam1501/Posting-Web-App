@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Timeline</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-dark bg-primary px-5">
+        <h2 style="color: #fff;">Timeline Page</h2>
+        <a href="/profile" class="btn btn-success">Profile</a>
+        <a href="/logout" class="btn btn-dark">Logout</a>
+    </nav>
+
+    
+    <div class="container d-flex flex-column justify-content-center align-items-center">
+        <% if(allpost.length> 0){ %>
+            <% allpost.forEach(function(val){ %>
+                <div class="card mt-3" style="width: 45rem;">
+                   <strong><h3 style="text-transform: capitalize; margin-left: 15px;">User | <%= val.postuser.username %></h3></strong> 
+                    <img src="<%= val.imageurl %>" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text">
+                            <%= val.caption %>
+                        </p>
+                        <a href=<%="/likes/" + val._id %> class="btn btn-primary">Likes <%= val.likes.length %></a>
+                        <a href="#" class="btn btn-secondary">Comments</a>
+                    </div>
+                </div>
+                <% }) %>
+                    <% } else{ %>
+                        <h1>No Items here</h1>
+                        <% } %>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+  </body>
+</html>
